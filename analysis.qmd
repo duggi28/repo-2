@@ -1,5 +1,31 @@
 ---
-title: "Untitled"
+title: "A Beautiful Graphic"
+author: "Rithvik Duggireddy"
 format: html
+execute:
+   echo: false
 ---
 
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+```
+
+```{r}
+ggplot(diamonds, aes(x = carat, y = price, color = clarity)) +
+  geom_point(alpha = 0.6, size = 1.2) +
+  geom_smooth(method = "loess", se = FALSE, color = "black", linetype = "dashed") +
+  scale_color_viridis_d(option = "plasma") +
+  labs(
+    title = "Diamond Price vs. Carat by Clarity",
+    subtitle = "Clarity influences both pricing and carat distribution",
+    x = "Carat",
+    y = "Price (USD)",
+    color = "Clarity"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    legend.position = "top"
+  )
+```
